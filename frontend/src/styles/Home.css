@@ -1,0 +1,1182 @@
+/* ==========================================
+   HOME PAGE STYLES - LANDING PAGE DESIGN
+   ========================================== */
+
+:root {
+  /* Світла тема - Змінні */
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+  --light-blue-bg: #eff6ff;
+  --text-dark: #111827;
+  --text-gray: #4b5563;
+  --text-light-gray: #6b7280;
+  --border-color: #e5e7eb;
+  --bg-main: #fcfcfd;
+  --bg-section: #ffffff;
+  --bg-alt: #f9fafb;
+  --card-bg: #ffffff;
+  --card-inner-bg: #ffffff;
+}
+
+/* Темна тема - Змінні */
+body.dark-mode {
+  --primary-blue: #3b82f6;
+  --primary-blue-hover: #60a5fa;
+  --light-blue-bg: rgba(59, 130, 246, 0.1);
+  --text-dark: #f9fafb;
+  --text-gray: #d1d5db;
+  --text-light-gray: #9ca3af;
+  --border-color: #374151;
+  --bg-main: #0b0f19;
+  --bg-section: #111827;
+  --bg-alt: #1f2937;
+  --card-bg: #1f2937;
+  --card-inner-bg: #1f2937; /* Темний фон для карток */
+}
+
+.home-landing {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-main);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
+.hero-section {
+  position: relative;
+  padding: 4rem 2rem 6rem;
+  background-color: var(--bg-section);
+  transition: background-color 0.3s ease;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* Робимо колонку з фото трохи ширшою */
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--light-blue-bg);
+  color: var(--primary-blue);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  width: fit-content;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.hero-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.text-gradient {
+  color: var(--primary-blue);
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: var(--text-gray);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-primary-large,
+.btn-secondary-large {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-large {
+  background: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary-large:hover {
+  background: var(--primary-blue-hover);
+}
+
+.btn-secondary-large {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary-large:hover {
+  background: var(--bg-alt);
+}
+
+.hero-inline-features {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.inline-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.inline-feature svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary-blue);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.inline-feature-text strong {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.inline-feature-text p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-light-gray);
+  line-height: 1.4;
+  max-width: 120px;
+}
+
+/* ==========================================
+   HERO VISUAL (Збільшений контейнер)
+   ========================================== */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.xray-mockup {
+  position: relative;
+  width: 100%;
+  max-width: 550px; /* Збільшено з 450px до 550px */
+  border-radius: 20px;
+  overflow: visible;
+}
+
+.xray-image-bg {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.yolo-box {
+  position: absolute;
+  border: 1.5px solid rgba(59, 130, 246, 0.8); /* Більш чітка синя рамка */
+  background: rgba(59, 130, 246, 0.15); /* Легка синя заливка */
+  border-radius: 8px; /* Трохи більші заокруглення, як на макеті */
+  /* display: none; - цей рядок ми видалили */
+}
+
+/* Налаштовуємо позиції під рентген */
+.box-1 {
+  top: 25%;
+  left: 20%;
+  width: 25%;
+  height: 45%;
+}
+
+.box-2 {
+  top: 28%;
+  right: 18%;
+  width: 24%;
+  height: 42%;
+}
+
+/* Картка результату аналізу (87%) */
+.analysis-card {
+  position: absolute;
+  bottom: -2rem;
+  left: 2rem;
+  right: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.analysis-card h4 {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.analysis-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analysis-percent p {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-light-gray);
+}
+
+.percent {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  line-height: 1;
+}
+
+.progress-ring {
+  width: 60px;
+  height: 60px;
+}
+
+.progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: rgb(203, 224, 255);
+  stroke-width: 12;
+  transition: stroke 0.3s ease;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--primary-blue);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 283; /* Повна довжина контуру кола */
+  stroke-dashoffset: 37; /* Залишає зафарбованими рівно 87% лінії */
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+/* Адаптація для темної теми */
+body.dark-mode .ring-bg {
+  stroke: #374151;
+}
+
+/* ==========================================
+   INFO SECTION (2 Cards)
+   ========================================== */
+
+.info-section {
+  padding: 2rem 2rem 6rem;
+  background-color: var(--bg-section);
+}
+
+.info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.info-card-large {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Картка з легенями */
+.info-card-large.bg-lungs {
+  background-color: var(--light-blue-bg);
+}
+
+.lungs-top-section {
+  display: flex;
+  padding: 2rem 2rem 1.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  flex: 1;
+}
+
+.lungs-illustration {
+  flex: 1;
+  max-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lungs-text-content {
+  flex: 1.5;
+}
+
+.lungs-text-content h3 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.lungs-text-content p {
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Контейнер для 3 іконок знизу */
+.pneumonia-icons-wrapper {
+  background: var(--card-inner-bg);
+  margin: 0 1rem 1rem 1rem;
+  padding: 1.25rem;
+  border-radius: 16px;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.p-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 90px;
+}
+
+.p-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--light-blue-bg);
+  border-radius: 50%;
+}
+
+.p-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-blue);
+}
+
+.p-icon-item span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+/* Права картка (статистика) */
+.info-card-large.bg-white {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+}
+
+.info-card-large.bg-white .info-card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card-large.bg-white h3 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.info-card-large.bg-white p {
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.stat-box {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-icon {
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.stat-icon svg {
+  color: var(--primary-blue);
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-light-gray);
+  line-height: 1.4;
+}
+
+/* ==========================================
+   HOW IT WORKS SECTION (АДАПТИВНА ТЕМА)
+   ========================================== */
+
+.how-it-works-section {
+  padding: 6rem 2rem;
+  background-color: #ffffff; /* Чистий білий фон для світлої теми */
+  transition: background-color 0.3s ease;
+}
+
+/* Автоматична зміна фону при увімкненні темної теми */
+body.dark-mode .how-it-works-section {
+  background-color: var(--bg-dark, var(--bg-section));
+}
+
+.how-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.how-it-works-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 4rem;
+  color: #111827; /* Темний заголовок для світлої теми */
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .how-it-works-section h2 {
+  color: #ffffff; /* Білий заголовок для темної теми */
+}
+
+.steps-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Пунктирна лінія з'єднання */
+.steps-container::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  border-top: 2px dashed #e5e7eb; /* Світла лінія */
+  z-index: 0;
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .steps-container::before {
+  border-top-color: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Напівпрозора лінія в темній темі */
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+/* Синій кружечок з номером */
+.step-number {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #ffffff; /* Біла обводка для світлої теми */
+  z-index: 2;
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .step-number {
+  border-color: var(
+    --bg-dark,
+    var(--bg-section)
+  ); /* Обводка автоматично стає темною */
+}
+
+/* Білий квадрат (squircle) для іконки — залишається білим в обох темах, як на макеті */
+.step-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  transition: box-shadow 0.3s ease;
+}
+
+body.dark-mode .step-icon {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.step-icon svg {
+  color: #2563eb !important;
+  width: 32px;
+  height: 32px;
+}
+
+.step-item h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .step-item h3 {
+  color: #ffffff;
+}
+
+.step-item p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .step-item p {
+  color: var(--text-muted, #9ca3af);
+}
+
+/* Адаптивність для кроків */
+@media (max-width: 1024px) {
+  .steps-container::before {
+    display: none;
+  }
+  .steps-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ==========================================
+   WHY CHOOSE SECTION
+   ========================================== */
+
+.why-choose-section {
+  padding: 4rem 2rem 6rem;
+  background: var(--bg-section);
+}
+
+.why-choose-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-choose-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 3rem;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.why-choose-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.why-choose-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.why-choose-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.why-choose-list svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-blue);
+  flex-shrink: 0;
+  background: var(--card-bg);
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.target-card {
+  background: var(--light-blue-bg);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  border: 1px solid var(--border-color);
+}
+
+.target-icon svg {
+  color: var(--primary-blue);
+}
+
+.target-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.target-card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.btn-primary-small {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary-small:hover {
+  background: var(--primary-blue-hover);
+}
+
+.btn-primary-small svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ==========================================
+   FOOTER SECURITY BADGE
+   ========================================== */
+.security-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  background: var(--bg-section);
+  color: var(--text-light-gray);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.security-footer svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary-blue);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .hero-container,
+  .info-grid,
+  .why-choose-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-visual {
+    justify-content: center;
+  }
+
+  .analysis-card {
+    left: 1rem;
+    right: 1rem;
+    bottom: -1rem;
+  }
+
+  .lungs-top-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .steps-container::before {
+    display: none;
+  }
+
+  .steps-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inline-features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pneumonia-icons-wrapper {
+    flex-direction: column;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary-large,
+  .btn-secondary-large {
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   RISK FACTORS SECTION
+   ========================================== */
+.risk-factors-section {
+  padding: 4rem 2rem 6rem;
+  background-color: var(--bg-section);
+  text-align: center;
+}
+
+.risk-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.risk-factors-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  color: var(--text-dark);
+}
+
+.risk-subtitle {
+  color: var(--text-gray);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.5;
+}
+
+.risk-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.risk-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.risk-card h4 {
+  color: var(--text-dark);
+}
+
+.risk-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.risk-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.risk-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Кольори іконок ризику */
+.icon-green {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+.icon-orange {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+}
+.icon-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+.icon-purple {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+/* ==========================================
+   CTA BANNER SECTION
+   ========================================== */
+.cta-banner-section {
+  padding: 0 2rem 4rem;
+  background-color: var(--bg-section);
+}
+
+.cta-banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--light-blue-bg);
+  border-radius: 24px;
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.cta-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 60%;
+}
+
+.cta-icon-target {
+  width: 80px;
+  height: 80px;
+  background: var(--bg-section);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+  color: var(--primary-blue);
+}
+
+.cta-icon-target svg {
+  width: 40px;
+  height: 40px;
+}
+
+.cta-text h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: var(--text-dark);
+}
+
+.cta-text p {
+  margin: 0;
+  color: var(--text-gray);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.cta-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cta-note {
+  font-size: 0.8rem;
+  color: var(--text-light-gray);
+  font-weight: 500;
+}
+
+/* ==========================================
+   MAIN FOOTER
+   ========================================== */
+.main-footer {
+  background-color: var(--bg-section);
+  border-top: 1px solid var(--border-color);
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.logo-icon-text {
+  font-size: 1.5rem;
+}
+
+.footer-logo h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.brand-desc {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-contact h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--text-dark);
+}
+
+.contact-email {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--bg-section);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light-gray);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  background: var(--light-blue-bg);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-light-gray);
+  font-size: 0.85rem;
+}
+
+.security-note svg {
+  width: 18px;
+  height: 18px;
+  color: var(--primary-blue);
+}
+
+.copyright {
+  color: var(--text-light-gray);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .risk-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cta-banner-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  .cta-banner-content {
+    max-width: 100%;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .risk-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Якщо сайдбар відсутній, розширюємо контент на 100% екрану */
+body:not(:has(.sidebar)) .home-landing,
+body:not(:has(.sidebar)) .main-content {
+  margin-left: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-top: 70px; /* Захист, щоб верхній хедер не перекривав банер */
+}
+
+body:not(:has(.sidebar)) .hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}

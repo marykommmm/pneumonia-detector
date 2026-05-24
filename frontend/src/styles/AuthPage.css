@@ -1,0 +1,171 @@
+/* =========================================
+   AUTH PAGE (СВІТЛА ТА ТЕМНА ТЕМИ)
+   ========================================= */
+
+:root {
+  --auth-card-bg: #ffffff;
+  --auth-text: #0f172a;
+  --auth-muted: #64748b;
+  --auth-border: #e2e8f0;
+  --auth-input-bg: #f8fafc;
+  --auth-primary: #3b82f6;
+  --auth-primary-hover: #2563eb;
+}
+
+body.dark-mode {
+  --auth-card-bg: #111827;
+  --auth-text: #f8fafc;
+  --auth-muted: #94a3b8;
+  --auth-border: #1e293b;
+  --auth-input-bg: #0b1121;
+}
+
+.auth-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Трохи збільшив, щоб картка була по центру екрану */
+}
+
+.auth-card {
+  max-width: 450px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  color: var(--auth-text);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body.dark-mode .auth-card {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.auth-card h2 {
+  color: var(--auth-text);
+}
+
+.auth-subtitle {
+  color: var(--auth-muted);
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Оновлений алерт для помилок */
+.auth-error-alert {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--auth-text);
+}
+
+.input-group input {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--auth-border) !important;
+  background-color: var(
+    --auth-input-bg
+  ) !important; /* Жорстко застосовуємо світлий/темний фон */
+  color: var(--auth-text) !important; /* Жорстко застосовуємо колір тексту */
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.input-group input:focus {
+  border-color: var(--auth-primary) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* ФІКС: Щоб автозаповнення паролів у Chrome не ламало колір фону */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus,
+.input-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--auth-input-bg) inset !important;
+  -webkit-text-fill-color: var(--auth-text) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+/* Кнопка авторизації */
+.auth-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 14px;
+  background-color: var(--auth-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.auth-submit:hover:not(:disabled) {
+  background-color: var(--auth-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.auth-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Перемикач внизу */
+.auth-switch {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--auth-muted);
+  font-size: 0.95rem;
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: var(--auth-primary);
+  font-weight: 700;
+  margin-left: 0.5rem;
+  padding: 0;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.switch-btn:hover {
+  text-decoration: underline;
+  color: var(--auth-primary-hover);
+}

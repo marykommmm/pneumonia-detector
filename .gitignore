@@ -1,0 +1,20 @@
+# Бекенд (віртуальне оточення та кеш)
+venv/
+backend/venv/
+__pycache__/
+backend/__pycache__/
+*.pyc
+
+# Фронтенд (важкі бібліотеки та білди)
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# Змінні середовища
+.env
+frontend/.env
+backend/.env
+
+# Системні файли
+.DS_Store

@@ -1,0 +1,357 @@
+/* =========================================
+   SETTINGS PAGE (СВІТЛА ТА ТЕМНА ТЕМИ)
+   ========================================= */
+
+/* Світла тема (за замовчуванням) */
+:root {
+  --set-bg: #f8fafc;
+  --set-card: #ffffff;
+  --set-text: #0f172a;
+  --set-muted: #64748b;
+  --set-border: #e2e8f0;
+  --set-input: #f8fafc;
+  --set-danger-bg: #fef2f2;
+  --set-danger-border: #fecaca;
+}
+
+/* Темна тема */
+body.dark-mode {
+  --set-bg: #0b1121;
+  --set-card: #111827;
+  --set-text: #f8fafc;
+  --set-muted: #94a3b8;
+  --set-border: #1e293b;
+  --set-input: #0b1121;
+  --set-danger-bg: rgba(239, 68, 68, 0.05);
+  --set-danger-border: rgba(239, 68, 68, 0.2);
+}
+
+/* Головний контейнер */
+.settings-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--set-bg) !important;
+  padding: 2.5rem 4rem;
+  box-sizing: border-box;
+  color: var(--set-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* --- ВЕРХНЯ ШАПКА --- */
+.settings-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.header-text h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--set-text);
+  margin: 0 0 0.4rem 0;
+}
+.header-text p {
+  color: var(--set-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.user-mini-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-avatar {
+  width: 40px;
+  height: 40px;
+  background: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.mini-info {
+  display: flex;
+  flex-direction: column;
+}
+.mini-info .name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--set-text);
+}
+.mini-info .role {
+  color: var(--set-muted);
+  font-size: 0.8rem;
+}
+
+/* --- Тост-сповіщення (Плаваючий блок) --- */
+.status-toast {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 9999;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.status-toast.success {
+  background: rgba(16, 185, 129, 0.95);
+  color: #ffffff;
+}
+.status-toast.error {
+  background: rgba(239, 68, 68, 0.95);
+  color: #ffffff;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- ГОЛОВНА СІТКА (2 КОЛОНКИ) --- */
+.settings-grid-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.settings-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-card {
+  background: var(--set-card);
+  border: 1px solid var(--set-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.theme-card h3 {
+  font-size: 1.15rem;
+  color: var(--set-text);
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--set-border);
+  padding-bottom: 1rem;
+}
+
+.icon-heading {
+  --ggs: 0.9;
+  color: #3b82f6;
+}
+
+/* --- ФОРМИ ВВОДУ --- */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+.form-group.mb-0 {
+  margin-bottom: 0;
+}
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--set-muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.hint-text {
+  font-size: 0.8rem;
+  color: var(--set-muted);
+  margin-top: 6px;
+}
+
+.theme-input {
+  width: 100%;
+  background: var(--set-input);
+  border: 1px solid var(--set-border);
+  color: var(--set-text);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+.theme-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+.disabled-input {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-with-icon {
+  position: relative;
+}
+.verified-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  --ggs: 0.9;
+}
+.text-success {
+  color: #10b981;
+}
+
+.theme-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%233b82f6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px auto;
+  cursor: pointer;
+}
+
+/* --- КНОПКИ --- */
+.btn-primary-block {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-primary-block:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+.btn-primary-block:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-outline-block {
+  width: 100%;
+  background: transparent;
+  color: #3b82f6;
+  border: 1px solid var(--set-border);
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-outline-block:hover:not(:disabled) {
+  background: var(--set-input);
+  border-color: #3b82f6;
+}
+.btn-outline-block.compact {
+  width: auto;
+  padding: 10px 20px;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+/* --- НЕБЕЗПЕЧНА ЗОНА --- */
+.danger-card {
+  border-color: var(--set-danger-border);
+  background: var(--set-danger-bg);
+}
+.danger-title {
+  color: #ef4444 !important;
+  border-bottom-color: var(--set-danger-border) !important;
+}
+.danger-title i {
+  color: #ef4444;
+}
+
+.danger-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.danger-action-row h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+  color: var(--set-text);
+}
+.danger-action-row p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--set-muted);
+}
+.text-danger {
+  color: #ef4444 !important;
+}
+
+.danger-separator {
+  height: 1px;
+  background: var(--set-danger-border);
+  margin: 1.2rem 0;
+}
+
+.btn-danger-outline {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-danger-outline:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+@media (max-width: 900px) {
+  .settings-grid-main {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .settings-page {
+    padding: 1.5rem;
+  }
+  .danger-action-row {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+}

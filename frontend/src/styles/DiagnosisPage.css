@@ -1,0 +1,783 @@
+/* =========================================
+   DIAGNOSIS PAGE (СВІТЛА ТА ТЕМНА ТЕМИ)
+   ========================================= */
+
+:root {
+  --diag-bg: #ffffff;
+  --diag-card: #ffffff;
+  --diag-text: #0f172a;
+  --diag-text-header: #0f172a;
+  --diag-muted: #64748b;
+  --diag-border: #e2e8f0;
+  --diag-dropzone: #f8fafc;
+  --diag-dropzone-hover: #eff6ff;
+  --diag-icon-bg: #e0e7ff;
+  --diag-step-bg: #f1f5f9;
+  --diag-xray-bg: #0f172a;
+  --diag-recom-bg: #eff6ff;
+  --diag-recom-text: #1e3a8a;
+  --diag-success-bg: #f0fdf4;
+}
+
+body.dark-mode {
+  --diag-bg: #0b1121;
+  --diag-card: #111827;
+  --diag-text: #f8fafc;
+  --diag-text-header: #f8fafc;
+  --diag-muted: #94a3b8;
+  --diag-border: #1e293b;
+  --diag-dropzone: #0b1121;
+  --diag-dropzone-hover: #1e293b;
+  --diag-icon-bg: #1e293b;
+  --diag-step-bg: #1e293b;
+  --diag-xray-bg: #000000;
+  --diag-recom-bg: rgba(59, 130, 246, 0.1);
+  --diag-recom-text: #93c5fd;
+  --diag-success-bg: rgba(34, 197, 94, 0.1);
+}
+
+.diagnosis-page {
+  width: 100%;
+  max-width: 100%;
+
+  flex: 1;
+  padding: 3rem 4rem;
+  background-color: var(--diag-bg);
+  min-height: 100vh;
+  box-sizing: border-box;
+  animation: fadeIn 0.4s ease;
+  color: var(--diag-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ЗАГОЛОВОК */
+.page-header h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--diag-text-header) !important;
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+}
+
+/* --- STEPPER (ПРОГРЕС-БАР) --- */
+.stepper-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  background: var(--diag-card);
+  padding: 1rem 2rem;
+  border-radius: 99px;
+  border: 1px solid var(--diag-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: 0.3s ease;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--diag-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.step.active {
+  color: var(--diag-text);
+}
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--diag-step-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.step.active .step-circle {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--diag-step-bg);
+  margin: 0 15px;
+  transition: 0.3s;
+}
+.step-line.active {
+  background: #3b82f6;
+}
+
+/* --- СІТКА ЗАВАНТАЖЕННЯ --- */
+.diagnosis-grid-upload {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* ГОЛОВНА КАРТКА ЗАВАНТАЖЕННЯ */
+.upload-main-card {
+  background: var(--diag-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--diag-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+}
+
+.upload-dropzone {
+  border: 2px dashed var(--diag-border);
+  border-radius: 12px;
+  background: var(--diag-dropzone);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  transition: 0.2s;
+  min-height: 350px;
+}
+.upload-dropzone:hover {
+  background: var(--diag-dropzone-hover);
+  border-color: #3b82f6;
+}
+
+.upload-icon-large {
+  width: 70px;
+  height: 70px;
+  background: var(--diag-icon-bg);
+  color: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+}
+.upload-icon-large i {
+  --ggs: 1.5;
+}
+
+.dropzone-content h3 {
+  font-size: 1.15rem;
+  color: var(--diag-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  font-weight: 800;
+}
+.dropzone-content p {
+  color: var(--diag-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary.upload-btn {
+  background: #3b82f6;
+  color: white;
+  padding: 12px 36px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.2s;
+  font-size: 0.95rem;
+  border: none;
+}
+.btn-primary.upload-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* --- ПАНЕЛЬ ПОРАД --- */
+.upload-tips-card {
+  background: var(--diag-dropzone);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--diag-border);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+}
+.upload-tips-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  color: var(--diag-text);
+  font-weight: 800;
+}
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.tips-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: var(--diag-text);
+  line-height: 1.4;
+  font-weight: 500;
+}
+.icon-wrapper {
+  width: 36px;
+  height: 36px;
+  background: var(--diag-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--diag-muted);
+  flex-shrink: 0;
+}
+.icon-wrapper i {
+  --ggs: 0.9;
+}
+.disclaimer-box {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--diag-muted);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* СТАН ПРЕВ'Ю */
+.preview-ready-state {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.preview-image-box img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--diag-border);
+}
+.preview-actions-box h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: var(--diag-text);
+}
+.text-muted {
+  color: var(--diag-muted);
+}
+
+/* --- СТАН АНАЛІЗУ --- */
+.analyzing-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--diag-card);
+  border-radius: 16px;
+  border: 1px solid var(--diag-border);
+}
+.analyzing-state h2 {
+  color: var(--diag-text);
+}
+.spinner-large {
+  width: 60px;
+  height: 60px;
+  border: 5px solid var(--diag-border);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 2rem;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- СІТКА РЕЗУЛЬТАТУ --- */
+.diagnosis-grid-result {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.result-image-card {
+  background: var(--diag-xray-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.result-image-card img {
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 12px;
+  flex: 1;
+}
+.image-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-details-card {
+  background: var(--diag-card);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--diag-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: 0.3s ease;
+}
+.result-details-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--diag-border);
+  padding-bottom: 1rem;
+  color: var(--diag-text);
+}
+
+/* Ймовірність */
+.probability-box {
+  background: var(--diag-dropzone);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.prob-label {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--diag-muted);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.prob-value {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.danger-text {
+  color: #ef4444;
+}
+.success-text {
+  color: #22c55e;
+}
+.danger-bg {
+  background: #ef4444;
+}
+.success-bg {
+  background: #22c55e;
+}
+.prob-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--diag-text);
+  font-weight: 500;
+}
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Виявлені області */
+.detected-areas-box h4,
+.recommendation-box h4 {
+  font-size: 1rem;
+  color: var(--diag-text);
+  margin-bottom: 1rem;
+}
+.areas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.areas-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--diag-card);
+  border: 1px solid var(--diag-border);
+  border-radius: 8px;
+}
+.area-dot {
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.area-text {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--diag-text);
+}
+.area-score {
+  font-weight: 700;
+  color: #3b82f6;
+}
+.no-areas-found {
+  padding: 15px;
+  background: var(--diag-success-bg);
+  color: #166534;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Рекомендація */
+.recommendation-box {
+  background: var(--diag-recom-bg);
+  border-left: 4px solid #3b82f6;
+  padding: 1.2rem;
+  border-radius: 0 8px 8px 0;
+}
+.recommendation-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--diag-recom-text);
+  line-height: 1.5;
+}
+
+/* Кнопки */
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-primary:hover {
+  background: #2563eb;
+}
+.btn-outline {
+  background: transparent;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-outline:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+.btn-outline-small {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.btn-outline-small:hover {
+  color: white;
+  border-color: #64748b;
+}
+.w-100 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-3 {
+  margin-top: 1rem;
+}
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+/* Адаптивність */
+@media (max-width: 992px) {
+  .diagnosis-grid-upload,
+  .diagnosis-grid-result {
+    grid-template-columns: 1fr;
+  }
+  .stepper-container {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  .step span {
+    display: none;
+  }
+  .preview-ready-state {
+    grid-template-columns: 1fr;
+  }
+}
+.verdict-badge {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+.verdict-danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.verdict-success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.verdict-orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+.verdict-warning {
+  background: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+.area-meta {
+  font-size: 0.8rem;
+  color: var(--diag-muted);
+  font-weight: 500;
+}
+.area-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.area-sub {
+  font-size: 0.78rem;
+  color: var(--diag-muted);
+  margin-top: 2px;
+}
+.total-area-row {
+  margin-top: 0.75rem;
+  padding: 10px 14px;
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--diag-text);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* =========================================
+   ШКАЛА ВАЖКОСТІ (СВІТЛА ТЕМА)
+   ========================================= */
+:root {
+  --sev-text-muted: #64748b;
+  --sev-bg-normal: #dcfce7;
+  --sev-text-normal: #166534;
+  --sev-bg-mild: #fef3c7;
+  --sev-text-mild: #b45309;
+  --sev-bg-mod: #ffedd5;
+  --sev-text-mod: #c2410c;
+  --sev-bg-sev: #fee2e2;
+  --sev-text-sev: #b91c1c;
+}
+
+/* =========================================
+   ШКАЛА ВАЖКОСТІ (ТЕМНА ТЕМА)
+   ========================================= */
+body.dark-mode {
+  --sev-text-muted: #94a3b8;
+  --sev-bg-normal: rgba(34, 197, 94, 0.15);
+  --sev-text-normal: #4ade80;
+  --sev-bg-mild: rgba(234, 179, 8, 0.15);
+  --sev-text-mild: #fde047;
+  --sev-bg-mod: rgba(249, 115, 22, 0.15);
+  --sev-text-mod: #fb923c;
+  --sev-bg-sev: rgba(239, 68, 68, 0.15);
+  --sev-text-sev: #f87171;
+}
+
+/* КЛАСИ ДЛЯ РЯДКІВ ТАБЛИЦІ */
+.severity-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--sev-text-muted);
+  font-weight: normal;
+  transition: all 0.3s ease;
+}
+
+.severity-row.active-normal {
+  background: var(--sev-bg-normal);
+  color: var(--sev-text-normal);
+  font-weight: 600;
+}
+
+.severity-row.active-mild {
+  background: var(--sev-bg-mild);
+  color: var(--sev-text-mild);
+  font-weight: 600;
+}
+
+.severity-row.active-mod {
+  background: var(--sev-bg-mod);
+  color: var(--sev-text-mod);
+  font-weight: 600;
+}
+
+.severity-row.active-sev {
+  background: var(--sev-bg-sev);
+  color: var(--sev-text-sev);
+  font-weight: 600;
+}
+
+/* =========================================
+   СТИЛІ ДЛЯ ДРУКУ (ЗБЕРЕЖЕННЯ В PDF)
+   ========================================= */
+/* =========================================
+   ІДЕАЛЬНИЙ СТИЛЬ ДЛЯ ДРУКУ (НА ОДНУ СТОРІНКУ А4)
+   ========================================= */
+@media print {
+  /* 1. ГЛОБАЛЬНЕ СКИДАННЯ: Ламаємо сітку головного застосунку, яка зсувала текст праворуч */
+  html,
+  body,
+  #root,
+  .app-container,
+  .main-layout,
+  .app-layout,
+  .content-wrapper,
+  .main-content {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* 2. ХОВАЄМО ВСЕ ЗАЙВЕ (Сайдбари, Кнопки, Кроки) */
+  .sidebar,
+  .app-sidebar,
+  .login-sidebar,
+  .page-header,
+  .stepper-container,
+  .image-footer,
+  button,
+  .btn-outline {
+    display: none !important;
+  }
+
+  /* 3. НАЛАШТУВАННЯ СТОРІНКИ ДЛЯ ЗВІТУ */
+  .diagnosis-page,
+  .diagnosis-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 8mm !important; /* Акуратні відступи від країв аркуша */
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* 4. РОЗМІЩЕННЯ ПОРУЧ (Знімок зліва, результати справа) */
+  .diagnosis-grid-result {
+    display: grid !important;
+    grid-template-columns: 44% 53% !important; /* Знімок зліва, інфо справа */
+    gap: 3% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 5. СТИЛІЗАЦІЯ ЗНІМКА (Верхній лівий кут) */
+  .result-image-card {
+    width: 100% !important;
+    max-height: 380px !important;
+    display: block !important;
+    margin: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .result-image-card img {
+    width: 100% !important;
+    max-height: 360px !important;
+    object-fit: contain !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+  }
+
+  /* 6. СТИЛІЗАЦІЯ ПРАВОЇ ПАНЕЛІ (Результати, шкала, рекомендації) */
+  .result-details-card {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Робимо внутрішні блоки компактнішими, щоб усе 100% влізло на 1 сторінку */
+  .probability-box,
+  .severity-scale-container,
+  .recommendation-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    margin: 0 !important;
+    background: #f8fafc !important; /* Гарантує легкий фон у PDF */
+  }
+
+  /* Зменшуємо відступи у заголовках для економії місця */
+  .result-details-card h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* 7. ПРИМУСОВЕ ПОКАЗАННЯ КОЛЬОРІВ (Для шкали важкості) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

@@ -1,0 +1,816 @@
+/* ============================================
+   RESET & ТЕМНА ТЕМА ДЛЯ АДМІНКИ (Slate 900)
+   ============================================ */
+:root {
+  --bg-main: #0f172a; /* Глибокий темний фон */
+  --bg-panel: #1e293b; /* Фон карток (Slate 800) */
+  --bg-hover: #334155; /* Фон при наведенні (Slate 700) */
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border-color: #334155;
+  --border-light: #1e293b;
+
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-purple: #8b5cf6;
+  --accent-yellow: #f59e0b;
+
+  --sidebar-width: 260px;
+}
+
+body.dark-mode {
+  background-color: var(--bg-main) !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+}
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   САЙДБАР
+   ============================================ */
+.admin-sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--bg-main);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.fixed-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.sidebar-logo {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-blue);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.logo-text h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+.logo-text span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-menu {
+  flex: 1;
+  padding: 0 1rem;
+  overflow-y: auto;
+}
+
+.nav-group-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 0.5rem 0.5rem;
+  text-align: left;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 12px;
+}
+
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--accent-blue);
+}
+
+.sidebar-footer {
+  padding: 1.5rem 1rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.centered-footer {
+  align-items: center;
+}
+
+.vertical-profile {
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center;
+  gap: 8px !important;
+  margin-bottom: 1.5rem !important;
+  cursor: default;
+}
+
+.large-avatar {
+  width: 44px !important;
+  height: 44px !important;
+  font-size: 1rem !important;
+  margin-bottom: 5px;
+}
+
+.centered-text {
+  align-items: center !important;
+}
+
+.user-name {
+  font-size: 0.9rem !important;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.user-role {
+  font-size: 0.75rem !important;
+  color: var(--text-muted);
+}
+
+.logout-btn-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn-dark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.logout-btn-dark:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   ОСНОВНИЙ КОНТЕНТ 
+   ============================================ */
+.admin-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  background-color: var(--bg-main);
+}
+
+.main-content-pushed {
+  margin-left: var(--sidebar-width);
+}
+
+.admin-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.page-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   НОВИЙ ПОШУКОВИЙ РЯДОК ДЛЯ КОРИСТУВАЧІВ
+   ============================================ */
+.search-bar-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+}
+
+.search-input-full {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input-full:focus {
+  border-color: var(--accent-blue);
+}
+
+/* ============================================
+   НОВИЙ ДИЗАЙН ТАБЛИЦІ КОРИСТУВАЧІВ
+   ============================================ */
+.users-table-card {
+  padding: 0 !important; /* Прибираємо падінги карточки щоб таблиця була на всю ширину */
+  overflow: hidden;
+}
+
+.users-table th {
+  background-color: transparent !important;
+  padding: 1rem 1.5rem !important;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color) !important;
+  text-transform: none !important;
+}
+
+.users-table td {
+  padding: 1rem 1.5rem !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.user-name-bold {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Чекбокс */
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-blue);
+  cursor: pointer;
+}
+
+/* Іконки редагування/видалення */
+.btn-action-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  border-radius: 6px;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-action-icon:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.btn-action-icon.text-danger:hover {
+  color: var(--accent-red);
+}
+
+/* ============================================
+   КАРТКИ СТАТИСТИКИ
+   ============================================ */
+.stats-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.modern-stat {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.25rem;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.stat-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon-circle svg {
+  width: 24px;
+  height: 24px;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bg-blue {
+  background: rgba(59, 130, 246, 0.1);
+}
+.text-blue {
+  color: var(--accent-blue);
+}
+.bg-green {
+  background: rgba(16, 185, 129, 0.1);
+}
+.text-green {
+  color: var(--accent-green);
+}
+.bg-purple {
+  background: rgba(139, 92, 246, 0.1);
+}
+.text-purple {
+  color: var(--accent-purple);
+}
+.text-danger {
+  color: var(--accent-red);
+}
+
+/* ============================================
+   ГРІД КОНТЕНТУ
+   ============================================ */
+.dashboard-main-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+  gap: 1.25rem;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+.col-span-3 {
+  grid-column: span 3;
+}
+
+.panel-card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.panel-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  color: var(--text-primary);
+}
+
+.btn-primary {
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-danger-outline {
+  background-color: transparent;
+  color: var(--accent-red);
+  border: 1px solid var(--accent-red);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ============================================
+   СТАНДАРТНІ ТАБЛИЦІ (ДЛЯ ОГЛЯДУ)
+   ============================================ */
+.table-responsive {
+  overflow-x: auto;
+  flex: 1;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.75rem 0;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table td {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cell-main {
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.cell-sub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-success {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--accent-green);
+}
+.status-danger {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--accent-red);
+}
+.status-neutral {
+  background-color: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.xray-thumbnail {
+  width: 36px;
+  height: 36px;
+  background-color: var(--bg-hover);
+  border-radius: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2364748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.user-cell-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar-small {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* ============================================
+   PIE CHART
+   ============================================ */
+.pie-chart-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.pie-center-text {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+.pie-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.pie-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.pie-legend-custom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.legend-text {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  font-size: 0.8rem;
+}
+.legend-name {
+  color: var(--text-secondary);
+}
+.legend-val {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   FORMS & INPUTS
+   ============================================ */
+.theme-input {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  outline: none;
+}
+.theme-input:focus {
+  border-color: var(--accent-blue);
+}
+.form-group label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  display: block;
+}
+/* ============================================
+   МОДАЛКА ТА ОГЛЯД (КАНВАС)
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.result-modal {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 850px; /* Збільшили з 600px до 850px */
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.modal-body.scrollable {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* Інформаційні блоки в модалці - переведено на Grid */
+.info-summary-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Авто-сітка */
+  gap: 1.5rem;
+  background-color: var(--bg-main);
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden; /* Запобігає вилізанню довгого тексту */
+}
+
+.info-block label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.info-block span {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Додає "..." якщо email занадто довгий */
+}
+
+.text-highlight {
+  color: var(--accent-blue) !important;
+  font-size: 1.1rem;
+}
+
+/* Акордеон для іспитів */
+.exam-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exam-details-item {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.exam-details-item summary {
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  outline: none;
+  list-style: none;
+  color: var(--text-primary);
+}
+
+.exam-details-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-content {
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-panel);
+}
+
+.final-score-banner {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--accent-green);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.final-score-banner strong {
+  font-size: 1.5rem;
+  display: block;
+  margin-top: 5px;
+}
+
+.text-blue {
+  color: var(--accent-blue);
+}

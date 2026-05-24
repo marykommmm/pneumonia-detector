@@ -1,0 +1,469 @@
+/* =========================================
+   PROFILE PAGE (СВІТЛА ТА ТЕМНА ТЕМИ)
+   ========================================= */
+
+/* Світла тема (за замовчуванням) */
+:root {
+  --prof-bg: #f8fafc;
+  --prof-card: #ffffff;
+  --prof-text: #0f172a;
+  --prof-muted: #64748b;
+  --prof-border: #e2e8f0;
+}
+
+/* Темна тема */
+body.dark-mode {
+  --prof-bg: #0b1121;
+  --prof-card: #111827;
+  --prof-text: #f8fafc;
+  --prof-muted: #94a3b8;
+  --prof-border: #1e293b;
+}
+
+.profile-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--prof-bg);
+  padding: 2.5rem 4rem;
+  box-sizing: border-box;
+  color: var(--prof-text);
+  animation: fadeIn 0.4s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* --- ВЕРХНЯ ШАПКА --- */
+.profile-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.header-text h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--prof-text);
+  margin: 0 0 0.4rem 0;
+}
+
+.header-text p {
+  color: var(--prof-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon-btn {
+  border: 1px solid var(--prof-border);
+  color: var(--prof-muted);
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.icon-btn:hover {
+  background: var(--prof-border);
+  color: var(--prof-text);
+}
+
+.user-mini-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-avatar {
+  width: 40px;
+  height: 40px;
+  background: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.mini-info {
+  display: flex;
+  flex-direction: column;
+}
+.mini-info .name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--prof-text);
+}
+.mini-info .role {
+  color: var(--prof-muted);
+  font-size: 0.8rem;
+}
+
+/* --- ГОЛОВНА СІТКА --- */
+.profile-grid-main {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.dark-card {
+  background: var(--prof-card);
+  border: 1px solid var(--prof-border);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* --- ЛІВА КОЛОНКА (ПРОФІЛЬ) --- */
+.user-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar-huge-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-huge {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.edit-avatar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--prof-border);
+  border: 2px solid var(--prof-card);
+  color: var(--prof-text);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.edit-avatar-btn i {
+  --ggs: 0.7;
+}
+
+.profile-name {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--prof-text);
+}
+.profile-role {
+  color: var(--prof-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.profile-badge {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+
+.profile-info-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.info-item i {
+  color: var(--prof-muted);
+  margin-top: 3px;
+  --ggs: 0.9;
+}
+.info-item label {
+  display: block;
+  color: var(--prof-muted);
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.info-item span {
+  color: var(--prof-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* --- ПРАВА КОЛОНКА (СТАТИСТИКА) --- */
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--prof-text);
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+}
+.mt-4 {
+  margin-top: 2.5rem;
+}
+
+.stats-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.dark-stat-card {
+  background: var(--prof-card);
+  border: 1px solid var(--prof-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+.dark-stat-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-3px);
+}
+
+.stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.stat-label {
+  color: var(--prof-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.stat-icon-small {
+  color: #3b82f6;
+  --ggs: 0.9;
+}
+
+.stat-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.stat-bignum {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--prof-text);
+}
+
+.stat-sparkline {
+  width: 60px;
+  height: 30px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.chart-up {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Cpath d='M0,30 Q20,10 40,20 T100,5' fill='none' stroke='%233b82f6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.chart-down {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Cpath d='M0,10 Q20,30 40,15 T100,25' fill='none' stroke='%233b82f6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+.chart-up-green {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Cpath d='M0,30 Q25,20 50,25 T100,0' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* --- РІВЕНЬ КОМПЕТЕНТНОСТІ --- */
+.competence-card {
+  padding: 2rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.competence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Півколо (Gauge) */
+.gauge-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.gauge-container {
+  position: relative;
+  width: 220px;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+.gauge-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.gauge-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.level-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.level-sub {
+  font-size: 0.85rem;
+  color: var(--prof-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.competence-desc {
+  color: var(--prof-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 250px;
+}
+
+/* Смуги прогресу (Skills) */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.skill-name {
+  color: var(--prof-text);
+  font-weight: 600;
+}
+.skill-percent {
+  color: var(--prof-text);
+  font-weight: 800;
+}
+
+.skill-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: var(--prof-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
+
+/* --- ПОРАДА ДНЯ --- */
+.tip-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+.tip-icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.tip-icon i {
+  --ggs: 1.2;
+}
+.tip-content h4 {
+  margin: 0 0 4px 0;
+  color: #3b82f6;
+  font-size: 0.95rem;
+}
+.tip-content p {
+  margin: 0;
+  color: var(--prof-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* --- АДАПТИВНІСТЬ --- */
+@media (max-width: 1200px) {
+  .stats-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 1024px) {
+  .profile-grid-main {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .competence-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 1.5rem;
+  }
+}

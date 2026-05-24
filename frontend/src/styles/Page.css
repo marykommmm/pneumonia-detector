@@ -1,0 +1,36 @@
+/* src/styles/Page.css */
+
+.page {
+  min-height: calc(100vh - 60px); /* Віднімаємо висоту навігації, якщо вона є */
+  background-color: #f4f7f6; /* Легкий медичний сіро-блакитний фон */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diagnosis-page,
+.training-page {
+  width: 100%;
+}
+
+/* Адаптивність для менших екранів */
+@media (max-width: 768px) {
+  .page {
+    padding: 1rem;
+  }
+}
+
+.page-container {
+  margin-left: 260px;
+
+  min-height: 100vh;
+
+  padding: 40px;
+
+  background: radial-gradient(
+    circle at top right,
+    rgba(59, 130, 246, 0.08),
+    transparent 30%
+  );
+}
