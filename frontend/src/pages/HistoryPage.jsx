@@ -289,22 +289,33 @@ function HistoryPage({ user }) {
 
             <div className="table-body">
               {displayResults.map((result, idx) => {
-                const dateStr = result.created_at.endsWith("Z")
-                  ? result.created_at
-                  : result.created_at + "Z";
-                const formattedDate = new Date(dateStr).toLocaleDateString(
-                  "uk-UA",
-                  {
+                // Безпечна перевірка: якщо дата є — форматуємо, якщо немає — ставимо прочерк
+                let formattedDate = "—";
+
+                if (result.created_at) {
+                  const dateStr = result.created_at.endsWith("Z")
+                    ? result.created_at
+                    : result.created_at + "Z";
+
+                  // УВАГА: тут тепер toLocaleString замість toLocaleDateString
+                  formattedDate = new Date(dateStr).toLocaleString("uk-UA", {
                     day: "2-digit",
                     month: "2-digit",
                     year: "numeric",
                     hour: "2-digit",
                     minute: "2-digit",
-                  },
-                );
+                  });
+                }
 
                 return (
                   <div key={result.id || idx} className="table-row">
+                    <div
+                      className="date-cell"
+                      style={{ fontWeight: "500", color: "var(--text-main)" }}
+                    >
+                      {formattedDate}
+                    </div>
+
                     <div className="badges-cell">
                       <span
                         className={`badge mode-badge ${result.session_mode}`}
