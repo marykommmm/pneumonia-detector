@@ -42,9 +42,14 @@ if not AWS_S3_BASE_URL:
 ANNOTATIONS_FILE = "annotations_final.json"
 pneumo_dataset = {}
 
+origins = [
+    "http://localhost:5173", # Для локальної розробки
+    "https://pneumonia-detector-rouge.vercel.appcd" # ЗАМІНИ НА РЕАЛЬНЕ ПОСИЛАННЯ З VERCEL!
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Або конкретно ["http://localhost:5173"]
+    allow_origins=origins,  # Або конкретно ["http://localhost:5173"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -77,7 +82,7 @@ async def startup_event():
             print(f"Помилка: Файл {ANNOTATIONS_FILE} не знайдено в папці проекту!")
         
        # Шлях до єдиної моделі
-        MODEL_PATH = ".\models\multi_task_best.pt"
+        MODEL_PATH = "multi_task_best.pt"
         
         if os.path.exists(MODEL_PATH):
             init_yolo(MODEL_PATH) 
