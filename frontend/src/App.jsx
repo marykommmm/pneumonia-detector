@@ -4,6 +4,7 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import "./App.css";
 import Navigation from "./components/Navigation";
+import ScrollToTop from "./components/ScrollToTop"; // <-- 1. ДОДАЛИ ІМПОРТ ПOМІЧНИКА
 import Home from "./pages/Home";
 import DiagnosisPage from "./pages/DiagnosisPage";
 import TrainingPage from "./pages/TrainingPage";
@@ -50,8 +51,8 @@ function App() {
     // 2. Очищаємо тему (опціонально, якщо хочете повне скидання)
     localStorage.removeItem("theme");
 
-    // 3. ПЕРЕНАПРАВЛЯЄМО НА ГОЛОВНУ — це прибере /settings з URL
-    navigate("/");
+    // 3. ПЕРЕНАПРАВЛЯЄМО НА ГОЛОВНУ через перезавантаження, щоб уникнути помилок роутера
+    window.location.href = "/";
   };
 
   const handleUpdateUser = (updatedUserData) => {
@@ -63,6 +64,7 @@ function App() {
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
       <I18nextProvider i18n={i18n}>
         <Router>
+          <ScrollToTop /> {/* <-- 2. ВСТАВИЛИ СЮДИ ВСЕРЕДИНУ РОУТЕРА */}
           <div className="app-container">
             {/* Показуємо бокову навігацію тільки якщо це НЕ адмін */}
             {user?.role !== "admin" && (
