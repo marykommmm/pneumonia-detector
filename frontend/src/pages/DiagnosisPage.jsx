@@ -98,7 +98,6 @@ function DiagnosisPage({ userId }) {
 
     // Якщо hasPneumonia === true (незалежно від кількості рамок)
     return {
-      label: t("diagnosis.pneumonia_label") || "Підозра на пневмонію",
       color: "warning", // Це автоматично зробить відсоток червоним!
       icon: (
         <svg
