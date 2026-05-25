@@ -813,7 +813,6 @@ const resources = {
         norm_title: "NORMAL",
         norm_label: "No pathologies detected",
         pneumonia_title: "PNEUMONIA DETECTED",
-        pneumonia_label: "Suspicion of pathology",
 
         zones_detected: "Affected zones detected:",
         found_areas: "Detected Areas",
