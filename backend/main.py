@@ -232,7 +232,7 @@ async def check_answer(request: AnswerRequest, db: Session = Depends(get_db)):
         if mean_iou > 0.5:
             adj_score = 100
         elif mean_iou > 0.2:
-            adj_score = 60 + (mean_iou - 0.2) * 133
+            adj_score = 60 + (mean_iou - 0.2) * 100
         else:
             adj_score = mean_iou * 300
 
@@ -318,3 +318,5 @@ async def diagnose(file: UploadFile = File(...), user_id: int = None, db: Sessio
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
+    
+    

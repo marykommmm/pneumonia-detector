@@ -53,7 +53,7 @@ class YOLOHandler:
                         'confidence': float(confidence)
                     })
 
-            # --- ЕТАП 3: СИНТЕЗ ТА РОЗПОДІЛ НА ЗОНИ ---
+            # --- ЕТАП 3: СИНТЕЗ ТА РОЗПОДІЛ НА ЗОНИ (ВИПРАВЛЕНО, БЕЗ РАНДОМУ) ---
             if len(boxes) > 0:
                 raw_conf = max([b['confidence'] for b in boxes]) * 100
                 
@@ -76,17 +76,17 @@ class YOLOHandler:
                     area_ratio = total_box_area / image_area
                     
                     if area_ratio > 0.25:
-                        calibrated_prob += random.uniform(35.0, 45.0)
+                        calibrated_prob += 40.0  # Фіксовано замість random.uniform(35.0, 45.0)
                     elif area_ratio > 0.12:
-                        calibrated_prob += random.uniform(20.0, 30.0)
+                        calibrated_prob += 25.0  # Фіксовано замість random.uniform(20.0, 30.0)
                     elif area_ratio > 0.05:
-                        calibrated_prob += random.uniform(8.0, 15.0)
+                        calibrated_prob += 11.5  # Фіксовано замість random.uniform(8.0, 15.0)
 
                     if len(boxes) >= 2:
-                        calibrated_prob += random.uniform(8.0, 12.0)
+                        calibrated_prob += 10.0  # Фіксовано замість random.uniform(8.0, 12.0)
                         
                     if calibrated_prob > 98.0:
-                        final_prob = random.uniform(96.5, 99.1)
+                        final_prob = 98.0        # Стабільна верхня межа
                     else:
                         final_prob = calibrated_prob
                         
@@ -105,8 +105,8 @@ class YOLOHandler:
                     
             else:
                 has_pneumonia = False
-                # ЖОДНИХ НУЛІВ: Природний фоновий шум від 1.5% до 8.5%
-                final_prob = random.uniform(1.5, 8.5)
+                # ЖОДНИХ НУЛІВ: Природний фоновий шум зафіксовано на 5.0%
+                final_prob = 5.0
 
             return {
                 'has_pneumonia': has_pneumonia,       
