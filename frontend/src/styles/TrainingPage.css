@@ -770,3 +770,188 @@ body.dark-mode {
   color: var(--train-text); /* Чорний у світлій, білий у темній */
   opacity: 0.25; /* Напівпрозорі лінії */
 }
+
+@media (max-width: 768px) {
+  /* 1. Повертаємо нормальну вертикальну структуру для карток складності */
+  .difficulty-card,
+  div:has(> .stars-container),
+  .mode-selector-container + div > div {
+    display: flex !important;
+    flex-direction: column !important; /* Елементи всередині картки один під одним */
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 24px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Контент всередині картки (зірочки, назва рівня, опис) */
+  .stars-container,
+  div[class*="stars"] {
+    display: flex !important;
+    flex-direction: row !important; /* Зірочки мають бути в один ряд! */
+    justify-content: center !important;
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Заголовок рівня ("Легкий рівень") */
+  .difficulty-title,
+  .difficulty-card h3,
+  div:has(> .stars-container) h3 {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin: 8px 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Опис рівня, який зараз обрізався праворуч */
+  .difficulty-description,
+  .difficulty-card p,
+  div:has(> .stars-container) p {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    color: #64748b !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 8px !important;
+    display: block !important; /* Повертаємо текстовий потік */
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Контейнер, в якому лежить сам знімок / канвас */
+  .xray-container,
+  .xray-mockup,
+  div:has(> canvas),
+  div:has(> img[alt*="X-ray"]) {
+    width: 100% !important;
+    /* Окреслюємо максимальну висоту, щоб знімок займав не більше 40-45% екрана */
+    max-height: 40vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: #000000; /* Чорний фон для пустих бокових зон, як у медичних переглядачах */
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 2. Масштабуємо сам знімок та Canvas для малювання розмітки всередині контейнера */
+  .xray-image-bg,
+  canvas,
+  img[src*="lungs"] {
+    width: auto !important; /* Дозволяємо ширині підлаштовуватися */
+    max-width: 100% !important;
+    /* КРИТИЧНО: картинка масштабується так, щоб повністю влізти за висотою */
+    height: 100% !important;
+    max-height: 40vh !important;
+    object-fit: contain !important; /* Зберігає пропорції, не розтягуючи знімок */
+  }
+}
+/* =========================================
+   АДАПТИВНІСТЬ ДЛЯ РОБОЧОЇ ЗОНИ ТРЕНАЖЕРА
+   ========================================= */
+@media (max-width: 768px) {
+  /* 1. Переводимо головний макет сторінки в один вертикальний стовпчик */
+  .editor-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .main-editor-area {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* 2. Фіксуємо висоту обгортки канвасу, щоб знімок не виштовхував інтерфейс */
+  .canvas-wrapper {
+    max-height: 40vh !important; /* Не більше 40% від висоти екрана смартфона */
+    padding: 8px !important;
+    background: #000000 !important;
+  }
+
+  /* 3. НАВЕДЕННЯ ПОРЯДКУ В НИЖНІЙ ПАНЕЛІ ДІЙ (.action-bar) */
+  .action-bar {
+    display: flex !important;
+    flex-direction: column !important; /* Текст іде на перший поверх, кнопки — на другий */
+    gap: 14px !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+    background: var(--train-card, #ffffff) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Текстовий блок підказки ("Намальовано зон: X") */
+  .action-info {
+    text-align: left !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  .info-title {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: var(--train-text, #0f172a) !important;
+  }
+
+  .info-subtitle {
+    font-size: 0.85rem !important;
+    color: var(--train-muted, #64748b) !important;
+    line-height: 1.3 !important;
+  }
+
+  /* 4. СІТКА ДЛЯ ТРЬОХ КНОПОК КЕРУВАННЯ */
+  .action-buttons {
+    display: grid !important;
+    /* Кнопки "Очистити" та "Норма" стають поруч (50/50), а "Перевірити" — велика кнопка під ними */
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* Загальний стиль для всіх трьох кнопок на мобільці */
+  .action-buttons button,
+  .action-buttons .btn-outline,
+  .action-buttons .btn-secondary,
+  .action-buttons .btn-primary {
+    height: 44px !important; /* Ідеальна висота для тачу */
+    padding: 0 10px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important; /* Текст не розривається */
+    border-radius: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  /* 🎯 Робимо головну синю кнопку («Перевірити» / «Надіслати відповідь») на всю ширину знизу */
+  .action-buttons .btn-primary {
+    grid-column: span 2 !important; /* Розтягується на обидві колонки */
+    font-size: 0.95rem !important;
+  }
+
+  /* 5. БІЧНА ПАНЕЛЬ РЕЗУЛЬТАТІВ (Коли з'являється фідбек у Практиці) */
+  .results-sidebar {
+    width: 100% !important;
+    margin-top: 10px !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+  }
+}

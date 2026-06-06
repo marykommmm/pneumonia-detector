@@ -826,7 +826,123 @@ body.dark-mode .step-item p {
     align-items: center;
   }
 }
+/* =========================================
+   ФІКС МOБІЛЬНОГО МАКЕТА РЕНТГЕНУ НА ГОЛОВНІЙ
+   ========================================= */
+@media (max-width: 768px) {
+  /* Головна обгортка візуального блоку */
+  .hero-visual {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 30px !important;
+    padding: 0 !important;
+  }
 
+  /* 🌙 ПІДТРИМКА ТЕМНОЇ ТЕМИ: робимо фон відступу темним */
+  body.dark-mode .home-landing {
+    background: #0b1121 !important; /* Колір має збігатися з основним фоном темної теми */
+  }
+
+  /* 📦 ПЕРЕТВОРЮЄМО МАКЕТ НА СТОВПЧИК: картинка зверху, інфо знизу */
+  .xray-mockup {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 340px !important; /* Задаємо оптимальну ширину під будь-який телефон */
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #000000 !important; /* Чорний медичний фон для самого знімка */
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+  }
+
+  /* Сама картинка рентгену */
+  .xray-image-bg {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+    border-radius: 20px 20px 0 0 !important; /* Заокруглюємо тільки верхні кути */
+  }
+
+  /* 🎯 ПРИБИРАЄМО НАКЛАДАННЯ КАРТКИ (Тепер вона акуратно знизу під знімком) */
+  .analysis-card {
+    position: relative !important; /* Відв'язуємо від десктопного абсолютного позиціонування */
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    padding: 16px !important;
+    background: #ffffff !important;
+    border-top: 1px solid #f1f5f9 !important;
+    border-radius: 0 0 20px 20px !important; /* Заокруглюємо нижні кути картки */
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+  }
+
+  /* Контент всередині картки аналізу міняємо під мобільні пропорції */
+  .analysis-content {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .analysis-card h4 {
+    font-size: 0.95rem !important;
+    margin-bottom: 6px !important;
+    color: #0f172a !important;
+  }
+
+  .analysis-percent p {
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+  }
+
+  .analysis-percent .percent {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #3b82f6 !important;
+  }
+
+  /* Компактне кільце прогресу */
+  .progress-ring {
+    width: 48px !important;
+    height: 48px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 🔵 ВИПРАВЛЯЄМО СИНІ РАМКИ ШТУЧНОГО ІНТЕЛЕКТУ (YOLO) */
+  .yolo-box {
+    position: absolute !important;
+    border: 2px solid #3b82f6 !important;
+    background: rgba(59, 130, 246, 0.15) !important;
+    border-radius: 6px !important;
+    pointer-events: none !important;
+  }
+
+  /* Перераховуємо відсоткові координати під нові мобільні пропорції картинки */
+  .yolo-box.box-1 {
+    top: 28% !important;
+    left: 24% !important;
+    width: 32% !important;
+    height: 42% !important;
+  }
+
+  .yolo-box.box-2 {
+    top: 32% !important;
+    left: 60% !important;
+    width: 20% !important;
+    height: 36% !important;
+  }
+}
 @media (max-width: 768px) {
   .hero-inline-features {
     flex-direction: column;
@@ -1179,4 +1295,179 @@ body:not(:has(.sidebar)) .hero-container {
   grid-template-columns: 1.2fr 1fr;
   gap: 40px;
   align-items: center;
+}
+
+/* =========================
+   MOBILE FIXES
+   ========================= */
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 1rem 4rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    width: 100%;
+  }
+
+  .btn-primary-large,
+  .btn-secondary-large {
+    width: 100%;
+  }
+
+  .hero-visual {
+    justify-content: center;
+  }
+
+  .xray-mockup {
+    max-width: 100%;
+  }
+
+  .analysis-card {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 1rem;
+  }
+
+  .info-section,
+  .how-it-works-section,
+  .why-choose-section,
+  .risk-factors-section,
+  .main-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .how-it-works-section h2,
+  .why-choose-section h2,
+  .risk-factors-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .info-card-large,
+  .target-card,
+  .risk-card {
+    padding: 1.25rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-brand,
+  .footer-contact {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Зрізаємо внутрішній відступ у головного обгорткового контейнера */
+  .home-landing {
+    padding-top: 60px !important; /* Залишаємо рівно стільки, скільки треба під мобільну шапку */
+    background: #ffffff !important;
+  }
+
+  /* 2. Обнуляємо паддінг у самої hero-секції */
+  .hero-section {
+    padding-top: 0 !important; /* Повністю прибираємо цей гігантський відступ */
+    margin-top: 0 !important;
+    min-height: auto !important; /* Щоб висота екрана комп'ютера не розтягувала мобільний блок */
+  }
+
+  /* 3. Якщо всередині секції є додатковий контейнер (наприклад, .hero-container або .container) */
+  .hero-container,
+  .hero-content {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* 4. Робимо акуратний відступ безпосередньо над самим бейджем */
+  .hero-badge {
+    margin-top: 15px !important; /* Ось цей відступ і буде реальним проміжком між білою шапкою та текстом */
+    margin-bottom: 10px !important;
+  }
+}
+
+/* =========================================
+   ГЛОБАЛЬНЕ ОЧИЩЕННЯ СКРОЛЛБАРУ ДЛЯ МОБІЛЬНИХ
+   ========================================= */
+@media (max-width: 768px) {
+  /* Запобігаємо появі горизонтальної прокрутки, яка часто викликає баги зі скроллбаром */
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 🤫 Ховаємо стандартний десктопний скроллбар для Chrome, Safari та Opera */
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    background: transparent !important;
+  }
+
+  /* Ховаємо для Firefox */
+  html {
+    scrollbar-width: none !important;
+  }
+
+  /* Ховаємо для Internet Explorer / Edge */
+  body {
+    -ms-overflow-style: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Контейнер для кнопок: ставимо їх одну під одною з невеликим проміжком */
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 0 4px !important;
+  }
+
+  /* Оптимізуємо розмір обох великих кнопок */
+  .btn-primary-large,
+  .btn-secondary-large {
+    width: 100% !important;
+    max-width: 100% !important;
+    /* Зменшуємо вертикальний паддінг з десктопного до мобільного (12px) */
+    padding: 12px 20px !important;
+    font-size: 0.95rem !important; /* Трохи менший шрифт, щоб текст не тиснув на краї */
+    font-weight: 600 !important;
+    height: 48px !important; /* Фіксуємо адекватну висоту для мобільного тач-елемента */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 🎯 Зменшуємо білу стрілку всередині синьої кнопки, щоб вона не розпирала її в висоту */
+  .btn-primary-large svg {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 !important; /* Прибираємо зайві марджини, якщо вони є */
+    flex-shrink: 0 !important;
+  }
 }

@@ -591,14 +591,14 @@ const resources = {
       // ========== HOME PAGE ==========
       home: {
         // --- Головна секція (Hero) ---
-        hero_title_1: "Artificial Intelligence",
-        hero_title_2: "for pneumonia diagnosis",
-        hero_title_highlight: "and your professional growth",
+        hero_title_1: "Artificial intelligence",
+        hero_title_2: "for the diagnosis of",
+        hero_title_highlight: "pneumonia",
         hero_desc:
-          "Upload an X-ray image for analysis or improve your skills with our interactive simulator.",
-        btn_diagnosis: "Diagnose Pneumonia",
-        btn_more: "Learn More", // Замінив btn_training, оскільки в новому дизайні там "Дізнатися більше"
-        ai_active: "AI MODEL ACTIVE",
+          "An interactive platform for training and self-assessment in detecting pneumonia on X-ray images using artificial intelligence.",
+        btn_diagnosis: "Start training",
+        btn_more: "Learn More",
+        ai_active: "AI for a healthy future",
 
         // --- Міні-переваги під кнопками ---
         feat_reliable: "Reliable",

@@ -57,10 +57,43 @@
   padding-bottom: 0.75rem;
 }
 
+/* Базовий стиль десктопу */
 .dashboard-modern {
   padding: 40px;
-  margin-left: 260px;
+  margin-left: 260px; /* Відступ для десктопного сайдбару */
   min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* АДАПТИВНІСТЬ ДЛЯ СЕКЦІЙ І СІТОК */
+@media (max-width: 1024px) {
+  .profile-grid-3col {
+    grid-template-columns: 1fr; /* Перетворюємо на 1 колонку */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-modern {
+    margin-left: 0; /* Скидаємо відступ сайдбару */
+    padding: 20px 16px;
+    padding-top: 80px; /* Додаємо відступ, щоб контент не ховався під мобільний Header */
+  }
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 1.2fr 1fr 1fr; /* Прибираємо зайві колонки для екранів телефонів */
+    font-size: 0.8rem;
+    padding: 12px 10px;
+  }
+
+  .metrics-cell {
+    display: none; /* Ховаємо складні метрики на малих екранах */
+  }
+
+  .stats-grid-modern {
+    grid-template-columns: 1fr; /* Картки статистики стають в один ряд */
+  }
 }
 
 .profile-grid-3col {
@@ -887,4 +920,29 @@ input:checked + .slider {
 }
 input:checked + .slider:before {
   transform: translateX(20px);
+}
+
+@media (max-width: 768px) {
+  .dashboard-modern {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .profile-grid-3col {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-user-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dash-card {
+    padding: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .profile-grid-3col {
+    grid-template-columns: 1fr;
+  }
 }

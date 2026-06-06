@@ -7,6 +7,7 @@ import "../styles/Dashboard.css";
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 function Dashboard({ user }) {
+  console.log("USER:", user);
   const { t } = useTranslation();
   const [stats, setStats] = useState({
     totalTrainings: 0,

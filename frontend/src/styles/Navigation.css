@@ -1,9 +1,9 @@
 /* =========================================
-   СУЧАСНИЙ SIDEBAR (БОКОВА ПАНЕЛЬ)
+   СУЧАСНИЙ SIDEBAR (БОКОВА ПАНЕЛЬ ДЛЯ ДЕСКТОПУ)
    ========================================= */
 .sidebar {
   width: 260px;
-  background: #0f172a; /* Темно-синій з референсу */
+  background: #0f172a;
   height: 100vh;
   position: fixed;
   left: 0;
@@ -27,7 +27,7 @@
 }
 
 .logo-icon {
-  background: #3b82f6; /* Синій акцент */
+  background: #3b82f6;
   width: 38px;
   height: 38px;
   border-radius: 10px;
@@ -67,20 +67,10 @@
   font-size: 0.95rem;
 }
 
-.nav-item i {
-  --ggs: 0.9;
-  opacity: 0.7;
-}
-
 .nav-item:hover,
 .nav-item.active {
   background: #1e293b;
   color: #ffffff;
-}
-
-.nav-item.active i {
-  color: #3b82f6;
-  opacity: 1;
 }
 
 .sidebar-footer {
@@ -94,26 +84,30 @@
   flex-direction: column;
   gap: 12px;
 }
-
+/* 🎯 ФІКС НАКЛАДАННЯ ІМЕНІ ТА РОЛІ В СAЙДБАРІ */
 .user-info {
-  display: flex;
-  flex-direction: column;
-  padding: 0 8px;
+  display: flex !important;
+  flex-direction: column !important; /* Ставимо ім'я та роль одне під одним */
+  gap: 2px !important; /* Робимо мікро-відступ між ними */
+  align-items: flex-start !important;
+  text-align: left !important;
 }
 
+/* Переконайся, що стилі для тексту нижче теж на місці: */
 .user-info .user-name {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: white;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
 }
 
 .user-info .user-role {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.8rem !important;
+  color: #64748b !important; /* Приємний приглушений колір для ролі */
+  line-height: 1.2 !important;
 }
 
-.logout-sidebar-btn,
-.login-sidebar-btn {
+.logout-sidebar-btn {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -128,99 +122,385 @@
   transition: 0.2s;
 }
 
-.login-sidebar-btn {
-  background: #3b82f6;
-  color: white;
-  border: none;
-}
-
 .logout-sidebar-btn:hover {
   background: rgba(239, 68, 68, 0.1);
   color: #ef4444;
   border-color: rgba(239, 68, 68, 0.2);
 }
 
-/* Модальне вікно залишаємо, як було */
-.auth-modal-overlay {
+/* =========================================
+   ГОСТЬОВИЙ HEADER (НЕАВТОРИЗОВАНИЙ РЕЖИМ)
+   ========================================= */
+.header-guest {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* 🎯 МАКСИМАЛЬНО ЛІВОРУЧ: 
+     12px зліва (логотип посунеться ще ближче до краю) 
+     і 20px справа (для кнопок логіну) */
+  padding-left: 12px !important;
+  padding-right: 20px !important;
+
+  gap: 15px !important;
+  z-index: 1000;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  /* 1. Ховаємо текст "LungAI", залишаючи тільки саму іконку легень */
+  .header-guest .sidebar-logo span {
+    display: none !important;
+  }
+
+  /* 2. Робимо гостьову шапку компактнішою */
+  .header-guest {
+    padding: 0 12px !important;
+    gap: 8px !important; /* Зменшуємо проміжки між елементами */
+  }
+
+  /* 3. Стискаємо перемикач мови */
+  .lang-switcher-guest {
+    margin-right: 4px !important;
+  }
+  .lang-btn-guest {
+    padding: 4px 10px !important;
+    font-size: 12px !important;
+  }
+
+  /* 4. Зменшуємо розмір обох кнопок, щоб вони помістилися в ряд */
+  .header-guest .btn-login,
+  .header-guest .btn-register {
+    padding: 8px 12px !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important; /* Забороняємо тексту переноситися */
+  }
+}
+
+/* ==========================================
+   СТИЛІ ДЛЯ ПЕРЕМИКАЧІВ МОВИ
+   ========================================== */
+
+/* 1. Авторизований сайдбар (темний) */
+.lang-switcher-sidebar {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
-.auth-modal {
-  background: white;
-  padding: 3rem 2.5rem;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-.close-modal-btn {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
+
+.lang-btn {
   background: none;
   border: none;
-  font-size: 0.9rem;
-  cursor: pointer;
-  color: #64748b;
-  font-weight: 600;
-  justify-content: flex-end;
-}
-.auth-modal h2 {
-  text-align: center;
-  color: #0f172a;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  font-weight: 800;
-}
-.auth-modal form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.auth-modal input {
-  padding: 1rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-.auth-modal input:focus {
-  border-color: #3b82f6;
-  outline: none;
-}
-.auth-modal-submit {
-  padding: 1rem;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  padding: 2px 8px;
 }
-.auth-toggle-text {
-  text-align: center;
-  margin-top: 1.5rem;
-}
-.auth-toggle-link {
-  background: none;
-  border: none;
+
+.lang-btn.active {
   color: #3b82f6;
-  font-weight: 700;
-  cursor: pointer;
 }
-.auth-error {
-  background: #fee2e2;
-  color: #ef4444;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+
+/* 🎯 2. Гостьова верхня плашка (ВИПРАВЛЕННЯ ВЕРТИКАЛЬНОГО НАКЛАДАННЯ) */
+.lang-switcher-guest {
+  display: flex !important;
+  flex-direction: row !important; /* Тільки в один горизонтальний ряд */
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  background: #f1f5f9 !important; /* Гарна світла підкладка-пігулка */
+  border-radius: 30px !important;
+  padding: 2px 4px !important;
+  border: 1px solid #e2e8f0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  margin-right: 15px;
+}
+
+.lang-btn-guest {
+  /* Повністю нейтралізуємо глобальні стилі кнопок, які ламали верстку */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 6px 14px !important;
+
+  width: auto !important;
+  height: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 20px !important;
+  transition: all 0.2s ease !important;
+}
+
+.lang-btn-guest:hover {
+  color: #1e293b !important;
+}
+
+/* Активна мова отримує красиве синє виділення всередині пігулки */
+.lang-btn-guest.active {
+  color: #ffffff !important;
+  background: #3b82f6 !important;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2) !important;
+}
+
+.lang-divider-guest {
+  color: #cbd5e1 !important;
+  font-size: 12px !important;
+  user-select: none !important;
+  display: inline-block !important;
+  margin: 0 2px !important;
+}
+
+/* ⚠️ КРИТИЧНИЙ ФІКС ДЛЯ ДЕСКТОПУ */
+.mobile-auth-header {
+  display: none !important;
+}
+.close-sidebar-btn {
+  display: none !important;
+}
+
+/* =========================================
+   АДAПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (до 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Вмикаємо відображення шапки ТІЛЬКИ на мобільних */
+  .mobile-auth-header {
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    background: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 8px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Кнопка-бургер строго обмежена за розміром і не розлітається */
+  .burger-menu-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #0f172a !important;
+    cursor: pointer !important;
+    width: 48px !important;
+    height: 48px !important;
+    flex: 0 0 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+
+  .burger-menu-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    display: block !important;
+  }
+
+  /* Логотип акуратно стає з правого боку */
+  .mobile-header-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: #0f172a !important;
+    margin-left: auto !important;
+    margin-right: 12px !important;
+  }
+
+  /* Мобільний сайдбар ховається ліворуч */
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    width: 280px !important;
+    max-width: 80vw !important;
+    background: #0f172a !important;
+    z-index: 2000 !important;
+    transform: translateX(-115%) !important;
+    box-shadow: none !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  .sidebar.open {
+    transform: translateX(0) !important;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .close-sidebar-btn {
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    cursor: pointer !important;
+  }
+
+  .sidebar-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    z-index: 1500 !important;
+  }
+}
+/* ==========================================
+   УЛЬТРА-ФІКС ДЛЯ МОДАЛКИ АВТОРИЗАЦІЇ (ВХІД / РЕЄСТРАЦІЯ)
+   ========================================== */
+
+/* 1. Залізобетонне повноекранне затемнення фону */
+.auth-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(
+    15,
+    23,
+    42,
+    0.6
+  ) !important; /* Глибокий темний відтінок */
+  backdrop-filter: blur(5px) !important; /* Сучасне розмиття фону сайту */
+
+  /* Центруємо біле віконце форми строго по центру екрана */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  /* Найвищий пріоритет, щоб перекрити і шапку, і контент */
+  z-index: 9999 !important;
+}
+
+/* 2. Стильний та монолітний білий контейнер форми */
+.auth-modal {
+  background: #ffffff !important;
+  padding: 32px 24px !important;
+  border-radius: 16px !important;
+  width: 100% !important;
+  max-width: 400px !important; /* Обмеження ширини на комп'ютерах */
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+
+  /* Плавна анімація появи вікна */
+  animation: modalSlideUp 0.25s ease-out !important;
+}
+
+/* Анімація м'якої появи знизу вгору */
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   КОРИГУВАННЯ ШАПКИ ТА МОДАЛКИ ДЛЯ МОБІЛОК
+   ========================================== */
+@media (max-width: 768px) {
+  /* Форма не повинна липнути впритул до боків дисплея смартфона */
+  .auth-modal {
+    width: 90% !important;
+    padding: 24px 20px !important;
+  }
+
+  /* Робимо кнопку "Log In" компактною та охайною */
+  .header-guest .btn-login {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* =========================================
+   ЗАЛІЗОБЕТОННЕПОВЕРНЕННЯ ХРЕСТИКА НА МІСЦЕ
+   ========================================= */
+
+/* Використовуємо подвійний селектор для максимальної специфічності */
+.auth-modal-overlay .close-modal-btn {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+
+  /* ⚠️ КРИТИЧНО: повністю випалюємо глобальні марджини та центрування */
+  margin: 0 !important;
+  transform: none !important;
+  left: auto !important;
+
+  /* Робимо акуратну квадратну зону для тачу */
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important; /* Приємний сірий колір */
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+  z-index: 100 !important;
+}
+
+/* Ефект під час наведення на хрестик */
+.auth-modal-overlay .close-modal-btn:hover {
+  color: #0f172a !important; /* Стає темнішим */
+}
+
+/* Про всяк випадок фіксуємо заголовок "Log In", щоб він теж не зсувався */
+/* 🎯 ВИРІВНЮЄМО ЗАГОЛОВОК МОДАЛКИ СТРОГО ПО ЦЕНТРУ */
+.auth-modal h2 {
+  margin-top: 0 !important;
+  margin-bottom: 24px !important;
+
+  /* 👑 Повертаємо ідеальне центрування для назви форми */
+  text-align: center !important;
+
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
 }

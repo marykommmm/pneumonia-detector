@@ -472,3 +472,108 @@ body.dark-mode {
     display: none;
   }
 }
+/* =========================================
+   ОНОВЛЕНА АДАПТИВНІСТЬ ДЛЯ ІСТОРІЇ (МОБІЛКИ)
+   ========================================= */
+
+/* Для планшетів (до 1024px) залишаємо базове компактне відображення */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .table-header div:nth-child(4),
+  .table-row .score-cell {
+    display: none !important;
+  }
+  .table-header div:nth-child(3),
+  .table-row .metrics-cell {
+    display: none !important;
+  }
+}
+
+/* 📱 КРИТИЧНИЙ ФІКС ДЛЯ СМАРТФОНІВ (до 768px) */
+@media (max-width: 768px) {
+  .history-page {
+    /* 1. Відсуваємо сторінку з-під фіксованої шапки і прибираємо гігантські відступи */
+    padding: 85px 16px 24px 16px !important;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .page-header .text-muted {
+    font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* 2. Ховаємо плоску шапку таблиці, вона не потрібна в режимі карток */
+  .table-header {
+    display: none !important;
+  }
+
+  .history-card-container {
+    background: transparent !important; /* Прибираємо загальну обгортку */
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  /* 3. Перетворюємо кожен рядок таблиці на окрему красиву картку */
+  .table-row {
+    display: flex !important;
+    flex-direction: column !important; /* Усі блоки всередині рядка йдуть зверху вниз */
+    align-items: stretch !important;
+    gap: 12px !important;
+
+    background: var(--hist-card, #ffffff) !important;
+    border: 1px solid var(--hist-border, #e2e8f0) !important;
+    border-radius: 14px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+  }
+
+  /* 4. Повертаємо примусово всі приховані дані (метрики та оцінку) */
+  .table-row .metrics-cell,
+  .table-row .score-cell {
+    display: flex !important;
+  }
+
+  /* Вирівнюємо бейджі (Practice / Easy) в один горизонтальний ряд */
+  .badges-cell {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  /* Робимо блок метрик чистішим */
+  .metrics-cell {
+    background: var(--hist-header-bg, #f8fafc) !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    gap: 6px !important;
+  }
+
+  /* Робимо оцінку великою та помітною всередині картки */
+  .score-cell {
+    font-size: 1.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: 开 !important;
+  }
+
+  /* 5. Кнопка "Review" розгортається на всю ширину для зручного натискання пальцем */
+  .btn-outline-small {
+    width: 100% !important;
+    height: 42px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 4px !important;
+    box-sizing: border-box !important;
+  }
+}

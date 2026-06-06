@@ -444,26 +444,87 @@ body.dark-mode {
   line-height: 1.4;
 }
 
-/* --- АДАПТИВНІСТЬ --- */
-@media (max-width: 1200px) {
-  .stats-grid-4col {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
+/* =========================================
+   ОНОВЛЕНА ІДЕАЛЬНА АДAПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ
+   ========================================= */
+
+/* Для планшетів (до 1024px) переводимо головну сітку в один стовпчик */
 @media (max-width: 1024px) {
   .profile-grid-main {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
   }
 }
+
+/* Для невеликих екранів (до 900px) розгортаємо блок компетенцій */
 @media (max-width: 900px) {
   .competence-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
   }
 }
-@media (max-width: 600px) {
+
+/* 📱 ГОЛОВНИЙ ФІКС ДЛЯ СМАРТФОНІВ (до 768px) */
+@media (max-width: 768px) {
   .profile-page {
-    padding: 1.5rem;
+    /* 1. Відсуваємо контент вниз строго під мобільну шапку (60px + 20px запас) */
+    padding: 80px 16px 24px 16px !important;
+  }
+
+  /* 2. Картки статистики ставимо в ОДИН стовпчик, щоб текст і графіки більше ніколи не обрізалися */
+  .stats-grid-4col {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* 3. Зменшуємо гігантські відступи карток, звільняючи місце під контент */
+  .dark-card {
+    padding: 1.5rem 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  /* 4. Компактно адаптуємо верхню панель профілю (Заголовок та дії) */
+  .profile-header-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .header-actions {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  /* 5. Оптимізуємо макет компетенцій та Gauge-півколо легень */
+  .gauge-container {
+    width: 180px !important;
+    height: 100px !important;
+    margin: 0 auto 1rem auto !important;
+  }
+
+  .level-title {
+    font-size: 1.3rem !important;
+  }
+
+  .competence-desc {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Злегка зменшуємо відступ бейджа */
+  .profile-badge {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Мікро-фікс для зовсім крихітних екранів (до 480px) */
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 75px 12px 20px 12px !important;
+  }
+
+  .stat-bignum {
+    font-size: 1.8rem !important;
   }
 }

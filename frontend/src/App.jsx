@@ -19,13 +19,20 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Перевіряємо тему
+    // Забороняємо браузеру автоматично відновлювати позицію прокрутки
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    // Примусово скролимо вгору при першому старті додатка
+    window.scrollTo(0, 0);
+
+    // Твій існуючий код перевірки теми
     const savedTheme = localStorage.getItem("theme") || "light";
     if (savedTheme === "dark") {
       document.body.classList.add("dark-mode");
     }
 
-    // Перевірка авторизації
+    // Твій існуючий код перевірки авторизації
     const savedUser = localStorage.getItem("user");
     const savedStatus = localStorage.getItem("isLoggedIn");
 
@@ -36,6 +43,9 @@ function App() {
   }, []);
 
   const handleLogin = (userData) => {
+    console.log("📥 handleLogin отримав:", userData);
+    console.log("📅 created_at у userData:", userData?.created_at);
+
     setIsLoggedIn(true);
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));

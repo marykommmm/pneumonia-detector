@@ -470,6 +470,14 @@ body {
     padding: 40px;
     display: block; /* Повертаємо блочну модель */
   }
+  @media (max-width: 768px) {
+    .dashboard-modern,
+    .home-page,
+    .page-content,
+    .main-content {
+      margin-left: 0 !important;
+    }
+  }
 
   .content-card,
   .modern-container,
@@ -589,4 +597,14 @@ body.dark-mode input:-webkit-autofill:focus,
 body.dark-mode input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #0b1121 inset !important;
   -webkit-text-fill-color: #f8fafc !important;
+}
+
+@media (max-width: 768px) {
+  /* Опускаємо весь контент авторизованої зони з-під шапки */
+  .dashboard-modern,
+  .home-landing,
+  main,
+  .main-content {
+    padding-top: 80px !important; /* 60px висота шапки + 20px відступ */
+  }
 }

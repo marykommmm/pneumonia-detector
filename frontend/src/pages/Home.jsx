@@ -29,10 +29,8 @@ function Home({ isLoggedIn }) {
   };
 
   const handleLearnMore = () => {
-    // Шукаємо секцію з id="how" (це секція "Як це працює")
     const howSection = document.getElementById("how");
     if (howSection) {
-      // Плавно прокручуємо до неї
       howSection.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -77,7 +75,7 @@ function Home({ isLoggedIn }) {
             </p>
 
             <div className="hero-buttons">
-              <button className="btn-primary-large" onClick={handleStart}>
+              <button className="btn-primary-large" onClick={handleTraining}>
                 {t("home.btn_diagnosis", "Почати тренування")}
                 <svg
                   fill="none"
