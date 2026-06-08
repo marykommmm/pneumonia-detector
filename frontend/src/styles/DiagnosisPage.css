@@ -41,7 +41,7 @@ body.dark-mode {
   max-width: 100%;
 
   flex: 1;
-  padding: 3rem 4rem;
+  padding: 24px 3rem;
   background-color: var(--diag-bg);
   min-height: 100vh;
   box-sizing: border-box;

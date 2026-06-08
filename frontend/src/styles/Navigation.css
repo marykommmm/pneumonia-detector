@@ -157,33 +157,65 @@
 }
 
 @media (max-width: 768px) {
-  /* 1. Ховаємо текст "LungAI", залишаючи тільки саму іконку легень */
-  .header-guest .sidebar-logo span {
+  /* 1. Повністю ховаємо всі варіації логотипу в гостьовому режимі */
+  .header-guest .sidebar-logo,
+  .header-guest .mobile-header-logo,
+  .header-guest .logo-icon,
+  .header-guest svg {
     display: none !important;
   }
 
-  /* 2. Робимо гостьову шапку компактнішою */
+  /* 2. Батьківська шапка дає повну свободу внутрішньому контейнеру */
   .header-guest {
-    padding: 0 12px !important;
-    gap: 8px !important; /* Зменшуємо проміжки між елементами */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 16px !important;
+    height: 60px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* 3. Стискаємо перемикач мови */
-  .lang-switcher-guest {
-    margin-right: 4px !important;
+  /* 3. 👑 ГОЛОВНИЙ ФІКС: Розтягуємо той самий внутрішній div з інспектора на всю ширину */
+  .header-guest > div {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Дозволяє працювати марджинам */
+    box-sizing: border-box !important;
+    gap: 10px !important; /* Задає чіткий проміжок між кнопками */
   }
+
+  /* 4. Компактний мовний перемикач (залишається ліворуч) */
+  .lang-switcher-guest {
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
   .lang-btn-guest {
     padding: 4px 10px !important;
     font-size: 12px !important;
   }
 
-  /* 4. Зменшуємо розмір обох кнопок, щоб вони помістилися в ряд */
+  /* 5. 🎯 МАГІЧНИЙ ШТОВХАЧ: тепер, коли div став широким, 
+        цей марджин відштовхне Вхід і Реєстрацію в самий правий куток! */
+  .header-guest .btn-login {
+    margin-left: auto !important;
+  }
+
+  /* 6. Контролюємо, щоб кнопки були акуратними й не розтягувалися */
   .header-guest .btn-login,
   .header-guest .btn-register {
-    padding: 8px 12px !important;
+    padding: 8px 14px !important;
     font-size: 0.85rem !important;
     border-radius: 6px !important;
-    white-space: nowrap !important; /* Забороняємо тексту переноситися */
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    width: auto !important;
+    flex-grow: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
 

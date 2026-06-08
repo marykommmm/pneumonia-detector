@@ -29,7 +29,7 @@ body.dark-mode {
 .training-page {
   width: 100%;
   max-width: 100%;
-  padding: 2.5rem 4rem;
+  padding: 24px 2.5rem 4rem;
   background-color: var(--train-bg);
   min-height: 100vh;
   box-sizing: border-box;
@@ -219,12 +219,12 @@ body.dark-mode {
 /* --- ВКАЛАДКА ІСПИТУ (МІНІМАЛІЗМ) --- */
 .exam-start-card {
   max-width: 800px; /* Зробили віконце ширшим (було 600) */
-  margin: 4rem auto; /* Додали більший відступ зверху */
+  margin: 5px auto; /* Додали більший відступ зверху */
   display: flex;
   flex-direction: column;
   align-items: center; /* Гарантовано центрує кнопку і весь вміст */
   text-align: center;
-  padding: 5rem 4rem; /* Збільшили внутрішній простір */
+  padding: 30px 4rem; /* Збільшили внутрішній простір */
   background: var(--train-card);
   border: 1px solid var(--train-border);
   border-radius: 24px; /* Більш плавні кути */
@@ -246,7 +246,7 @@ body.dark-mode {
 .exam-start-card p {
   color: var(--train-muted);
   line-height: 1.6;
-  margin-bottom: 2.5rem; /* Відсунули кнопку трохи нижче */
+  margin-bottom: 0; /* Відсунули кнопку трохи нижче */
   font-size: 1.1rem; /* Збільшили текст */
   max-width: 85%; /* Щоб текст не розтягувався в одну довгу лінію */
 }

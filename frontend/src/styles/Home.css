@@ -1379,9 +1379,32 @@ body:not(:has(.sidebar)) .hero-container {
 
 @media (max-width: 768px) {
   /* 1. Зрізаємо внутрішній відступ у головного обгорткового контейнера */
+  .main-content:has(.home-landing) {
+    padding-top: 0 !important;
+  }
+
+  /* 2. Переносимо чистий відступ від шапки безпосередньо на білий лендінг */
   .home-landing {
-    padding-top: 60px !important; /* Залишаємо рівно стільки, скільки треба під мобільну шапку */
-    background: #ffffff !important;
+    padding-top: 70px !important; /* 60px під шапку + 10px акуратного зазору */
+    margin-top: 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  /* 3. 🛡️ ЛІКВІДАЦІЯ БІЛОЇ ДІРИ: прибираємо зайві верхні відступи у нутрощів герою */
+  .home-landing .hero-section,
+  .home-landing .hero-content,
+  .home-landing .main-section-top,
+  .home-landing h1 {
+    margin-top: 0 !important;
+    padding-top: 5px !important;
+  }
+
+  /* 3. Якщо всередині синього блоку перед бейджем "AI for a healthy future" 
+     теж є зайве порожнє місце — стискаємо його */
+  .home-landing .hero-content,
+  .home-landing .main-section-top {
+    padding-top: 10px !important;
+    margin-top: 0 !important;
   }
 
   /* 2. Обнуляємо паддінг у самої hero-секції */

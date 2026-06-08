@@ -497,7 +497,7 @@ body.dark-mode {
 @media (max-width: 768px) {
   .history-page {
     /* 1. Відсуваємо сторінку з-під фіксованої шапки і прибираємо гігантські відступи */
-    padding: 85px 16px 24px 16px !important;
+    padding: 24px 16px 24px 16px !important;
   }
 
   .page-header h1 {
